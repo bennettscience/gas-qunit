@@ -10,7 +10,7 @@ function tests() {
 function doGet( e ) {
   QUnit.urlParams( e.parameter );
   QUnit.config({
-    title: "QUnit for GAS" // Sets the title of the test page.
+    title: "QUnit for GAS", // Sets the title of the test page.
   });
   // Fire up the tests
   QUnit.load( tests );
