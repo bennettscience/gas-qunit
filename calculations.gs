@@ -11,11 +11,11 @@ var Calcs = (function() {
   }
   
   const add = function(a ,b) {
-    if(isNumber(a) && isNumber(b)) {
-      return a + b
-    } else {
-      return false
-    }
+    if(!isNumber(a)) { throw new TypeError }
+    if(!isNumber(b)) { throw new CustomError('This deserves a custom message.'); }
+    
+    return a + b
+    
   }
   
   const isNumber = function(val) {
@@ -24,16 +24,17 @@ var Calcs = (function() {
       return true;
     }
     
-    return false;
+    return false
     
   }
+
   
   return {
     name: name,
     about: about,
     author: author,
     add: add,
-    isNumber: isNumber
+    isNumber: isNumber,
   }
 
 })()
