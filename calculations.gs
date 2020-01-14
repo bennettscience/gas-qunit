@@ -1,5 +1,9 @@
 var Calcs = (function() {
   
+  const init = function() {
+    return this
+  }
+  
   const name = 'calculation methods';
   
   const about = function() {
@@ -27,14 +31,27 @@ var Calcs = (function() {
     return false
     
   }
-
+  
+  const addArray = function(arr, int) {
+    
+    // Check the params
+    if (!Array.isArray(arr)) { return false }
+    if (typeof int !== 'number') { return false }
+    
+    var addArr = arr.map(function(val) { return val + int })
+    
+    return addArr;
+    
+  }
   
   return {
+    init: init,
     name: name,
     about: about,
     author: author,
     add: add,
     isNumber: isNumber,
+    addArray: addArray,
   }
 
 })()

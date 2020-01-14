@@ -30,3 +30,63 @@ function calcTests() {
   });
   
 }
+
+function objectTests() {
+  
+  QUnit.test('object and array basics', function() {
+    var array = [1, 2, 3, 4];
+    
+    var testCalcsClass = {
+      init: function() {},
+      name: "calculation methods",
+      about: function() {},
+      author: function() {},
+      add: function(a, b) {},
+      isNumber: function(val) {},
+      addArray: function(arr, int) {},
+    } 
+    
+    deepEqual(array, [1, 2, 3, 4], 'The arrays are equal');
+    deepEqual({a: "hello", b: "world"}, {a: "hello", b: "world"}, 'These objects are equal in props and values');
+    deepEqual(
+      { 
+        a: "hello", 
+        b: "world", 
+        c: { 
+          aa: "foo", 
+          bb: "bar" 
+        }
+      },{ 
+        a: "hello", 
+        b: "world", 
+        c: { 
+          aa: "foo", 
+          bb: "bar" 
+        }
+      }, 'Nested objects can be tested, too'); 
+    
+    propEqual(Calcs.init(), testCalcsClass, 'The objects are the same');
+    
+  });
+  
+  QUnit.test('Check multiple calculations', function() {
+    
+    equal(Calcs.addArray([1,2,3], 'dog'), false, 'Param 2 is a string');
+    equal(Calcs.addArray(2, 2), false, 'Param 1 is not an array');
+    deepEqual(Calcs.addArray([1, 2, 3], 2), [3, 4, 5], 'Added the array correctly');
+    
+  });
+  
+}
+
+function testArrayMath() {
+  
+  QUnit.test('Check multiple calculations', function() {
+    
+    equal(Calcs.addArray([1,2,3], 'dog'), false, 'Param 2 is a string');
+    equal(Calcs.addArray(2, 2), false, 'Param 1 is not an array');
+    deepEqual(Calcs.addArray([1, 2, 3], 2), [3, 4, 5], 'Added the array correctly');
+    
+  });
+  
+}
